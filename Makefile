@@ -1,29 +1,30 @@
-###############################################################################
-# Makefile for the project Scanalogic2_test_board
-###############################################################################
 
 ## General Flags
-PROJECT = Scanalogic2_test_board
-MCU = atmega168
-TARGET = Scanalogic2_test_board.elf
-CC = avr-gcc.exe
+PROJECT = main
+MCU = atmega168pa
+TARGET = $(PROJECT).elf
+#CC = avr-gcc.exe
+CC = avr-gcc
 
 ## Options common to compile, link and assembly rules
 COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -std=gnu99                                            -DF_CPU=20000000UL -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
+CFLAGS += -Wall -gdwarf-2 -std=gnu99 -DF_CPU=20000000UL -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+#CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
+
+## Included directories
+INCLUDES += -I./
+INCLUDES += -Iusb/
 
 ## Assembly specific flags
-ASMFLAGS = $(COMMON)
-ASMFLAGS += $(CFLAGS)
+ASMFLAGS = $(CFLAGS)
 ASMFLAGS += -x assembler-with-cpp -Wa,-gdwarf2
 
 ## Linker flags
 LDFLAGS = $(COMMON)
-LDFLAGS +=  -Wl,-Map=Scanalogic2_test_board.map
+LDFLAGS +=  -Wl,-Map=$(PROJECT).map
 LDFLAGS += -Wl,-section-start=.bootloader=0x3800
 
 
@@ -42,31 +43,31 @@ OBJECTS = main.o usbdrv.o usbdrvasm.o ini.o isr.o sram_spi.o usb.o
 LINKONLYOBJECTS = 
 
 ## Build
-all: $(TARGET) Scanalogic2_test_board.hex Scanalogic2_test_board.eep Scanalogic2_test_board.lss size
+all: $(TARGET) $(PROJECT).hex $(PROJECT).eep $(PROJECT).lss size
 
 ## Compile
-usbdrvasm.o: ../usbdrvasm.S
-	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
+main.o: main.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $<
 
-main.o: ../main.c
+ini.o: ini.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $<
+
+isr.o: isr.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $<
+
+sram_spi.o: sram_spi.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $<
+
+usb.o: usb.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $<
+
+usbdrvasm.o: usb/usbdrvasm.S
+	$(CC) $(INCLUDES) $(ASMFLAGS) -c $<
+
+usbdrv.o: usb/usbdrv.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-usbdrv.o: ../usbdrv.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-ini.o: ../ini.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-isr.o: ../isr.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-sram_spi.o: ../sram_spi.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-usb.o: ../usb.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-##Link
+## Link
 $(TARGET): $(OBJECTS)
 	 $(CC) $(LDFLAGS) $(OBJECTS) $(LINKONLYOBJECTS) $(LIBDIRS) $(LIBS) -o $(TARGET)
 
@@ -86,9 +87,8 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) Scanalogic2_test_board.elf dep/* Scanalogic2_test_board.hex Scanalogic2_test_board.eep Scanalogic2_test_board.lss Scanalogic2_test_board.map
+	-rm -rf $(OBJECTS) $(PROJECT).{elf,hex,eep,lss,map}
 
 
 ## Other dependencies
--include $(shell mkdir dep 2>/dev/null) $(wildcard dep/*)
-
+#--include $(shell mkdir dep 2>/dev/null) $(wildcard dep/*)
