@@ -1,0 +1,28 @@
+
+# Temporary files
+.*.swp
+.~lock*
+
+# Generated / Binaries
+*.o
+*.a
+*.elf
+*.bin
+*.map
+*.lst
+*.lss
+*.eep
+*.hex
+*.hexe
+
+# Eclipse
+.project
+.cproject
+.pydevproject
+.settings
+.metadata
+
+# AVR Studio
+#*.aws
+#*.aps
+
