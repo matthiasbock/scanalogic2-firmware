@@ -1,0 +1,635 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                              main.o (__udivmodsi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                              usbdrv.o (__do_copy_data)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                              usb.o (memcpy)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                              main.o (memset)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega168.o)
+                              main.o (__eerd_byte_m168)
+
+Allocating common symbols
+Common symbol       size              file
+
+trigger_type        0x1               main.o
+usb_data_read       0x1               main.o
+usbTxBuf            0xb               usbdrv.o
+address             0x2               main.o
+usb_alive           0x1               main.o
+address_t           0x2               main.o
+trigger_address     0x2               main.o
+usbTxStatus1        0xc               usbdrv.o
+sample_length       0x2               main.o
+alive_counter       0x4               main.o
+sram_sequence_busy  0x1               main.o
+t2                  0x1               main.o
+trigger_channel     0x1               main.o
+TCCR1B_temp         0x1               main.o
+trigger_address_offset
+                    0x1               main.o
+gen_mode            0x1               main.o
+currentAddress      0x1               main.o
+bytesRemaining      0x1               main.o
+my_sn               0x4               main.o
+abort_sequence      0x1               main.o
+post_trigger_samples
+                    0x4               main.o
+state_machine       0x1               main.o
+usbDeviceAddr       0x1               usbdrv.o
+test                0x1               main.o
+usbRxToken          0x1               usbdrv.o
+usbInputBufOffset   0x1               usbdrv.o
+stream              0xe4              main.o
+pre_trigger_samples
+                    0x4               main.o
+temp_add            0x2               main.o
+new_usb_data        0x1               main.o
+test_counter        0x1               main.o
+update_channel      0x1               main.o
+sampling_done       0x1               main.o
+trigged             0x1               main.o
+usbSofCount         0x1               usbdrv.o
+usbMsgPtr           0x2               usbdrv.o
+pc_connected        0x1               main.o
+idle_blink_counter  0x4               main.o
+timer1_post_scaller
+                    0x2               main.o
+usbRxLen            0x1               usbdrv.o
+min_valid_signal_period
+                    0x1               main.o
+usbNewDeviceAddr    0x1               usbdrv.o
+usbCurrentTok       0x1               usbdrv.o
+usb_speed_boost     0x1               main.o
+usbConfiguration    0x1               usbdrv.o
+usbRxBuf            0x16              usbdrv.o
+transfered_bytes    0x2               main.o
+sending_done        0x1               main.o
+trigger_instant     0x4               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+Address of section .bootloader set to 0x3800
+LOAD main.o
+LOAD usbdrv.o
+LOAD usbdrvasm.o
+LOAD ini.o
+LOAD isr.o
+LOAD sram_spi.o
+LOAD usb.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x167a
+ *(.vectors)
+ .vectors       0x00000000       0x68 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000068       0x60 usbdrv.o
+                0x00000094                usbDescriptorDevice
+                0x00000068                usbDescriptorString0
+                0x000000a6                usbDescriptorConfiguration
+                0x0000006c                usbDescriptorStringVendor
+                0x0000007e                usbDescriptorStringDevice
+ .progmem.data  0x000000c8       0x16 usb.o
+                0x000000c8                usbDescriptorHidReport
+                0x000000de                . = ALIGN (0x2)
+                0x000000de                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x000000de        0x0 linker stubs
+ *(.trampolines*)
+                0x000000de                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x000000de                __ctors_start = .
+ *(.ctors)
+                0x000000de                __ctors_end = .
+                0x000000de                __dtors_start = .
+ *(.dtors)
+                0x000000de                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x000000de        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+                0x000000de                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000de        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000ea       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x000000ea                __do_copy_data
+ .init4         0x00000100       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000100                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000110        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+ *(.init9)
+ *(.text)
+ .text          0x00000118        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+                0x00000118                __vector_22
+                0x00000118                __vector_24
+                0x00000118                __vector_12
+                0x00000118                __bad_interrupt
+                0x00000118                __vector_6
+                0x00000118                __vector_3
+                0x00000118                __vector_23
+                0x00000118                __vector_25
+                0x00000118                __vector_11
+                0x00000118                __vector_17
+                0x00000118                __vector_19
+                0x00000118                __vector_7
+                0x00000118                __vector_5
+                0x00000118                __vector_9
+                0x00000118                __vector_2
+                0x00000118                __vector_21
+                0x00000118                __vector_15
+                0x00000118                __vector_8
+                0x00000118                __vector_10
+                0x00000118                __vector_16
+                0x00000118                __vector_18
+                0x00000118                __vector_20
+ .text          0x0000011c      0xd76 main.o
+                0x0000011c                main
+ .text          0x00000e92      0x2ba usbdrv.o
+                0x00000ef0                usbPoll
+                0x00000eac                usbSetInterrupt
+                0x00000e92                usbInit
+ .text          0x0000114c      0x26c usbdrvasm.o
+                0x0000117e                __vector_1
+                0x0000114c                usbCrc16
+                0x00001176                usbCrc16Append
+ .text          0x000013b8       0x38 ini.o
+                0x000013e4                setup_trigger
+                0x000013b8                setup_timers
+ .text          0x000013f0      0x14c isr.o
+                0x000013f0                __vector_13
+                0x00001420                __vector_4
+                0x0000144e                __vector_14
+ .text          0x0000153c        0x0 sram_spi.o
+ .text          0x0000153c       0xc6 usb.o
+                0x0000153c                usbFunctionSetup
+                0x000015bc                usbFunctionRead
+                0x00001566                usbFunctionWrite
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .text          0x00001602        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega168.o)
+                0x00001602                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00001602       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00001602                __udivmodsi4
+ .text.libgcc   0x00001646        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001646        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001646        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x00001646       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x00001646                memcpy
+ .text.avr-libc
+                0x00001658        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00001658                memset
+ .text.avr-libc
+                0x00001666       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega168.o)
+                0x00001666                __eerd_byte_m168
+                0x00001676                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00001676        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001676                exit
+                0x00001676                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00001676        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000167a                _etext = .
+
+.data           0x00800100        0x2 load address 0x0000167a
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+ .data          0x00800100        0x0 main.o
+ .data          0x00800100        0x2 usbdrv.o
+                0x00800100                usbTxLen
+ .data          0x00800102        0x0 usbdrvasm.o
+ .data          0x00800102        0x0 ini.o
+ .data          0x00800102        0x0 isr.o
+ .data          0x00800102        0x0 sram_spi.o
+ .data          0x00800102        0x0 usb.o
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .data          0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega168.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800102                . = ALIGN (0x2)
+                0x00800102                _edata = .
+                0x00800102                PROVIDE (__data_end, .)
+
+.bss            0x00800102      0x159
+                0x00800102                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800102        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+ .bss           0x00800102        0x0 main.o
+ .bss           0x00800102        0x1 usbdrv.o
+ .bss           0x00800103        0x0 usbdrvasm.o
+ .bss           0x00800103        0x0 ini.o
+ .bss           0x00800103        0x0 isr.o
+ .bss           0x00800103        0x0 sram_spi.o
+ .bss           0x00800103        0x0 usb.o
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .bss           0x00800103        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega168.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800103      0x121 main.o
+                0x00800103                trigger_type
+                0x00800104                usb_data_read
+                0x00800105                address
+                0x00800107                usb_alive
+                0x00800108                address_t
+                0x0080010a                trigger_address
+                0x0080010c                sample_length
+                0x0080010e                alive_counter
+                0x00800112                sram_sequence_busy
+                0x00800113                t2
+                0x00800114                trigger_channel
+                0x00800115                TCCR1B_temp
+                0x00800116                trigger_address_offset
+                0x00800117                gen_mode
+                0x00800118                currentAddress
+                0x00800119                bytesRemaining
+                0x0080011a                my_sn
+                0x0080011e                abort_sequence
+                0x0080011f                post_trigger_samples
+                0x00800123                state_machine
+                0x00800124                test
+                0x00800125                stream
+                0x00800209                pre_trigger_samples
+                0x0080020d                temp_add
+                0x0080020f                new_usb_data
+                0x00800210                test_counter
+                0x00800211                update_channel
+                0x00800212                sampling_done
+                0x00800213                trigged
+                0x00800214                pc_connected
+                0x00800215                idle_blink_counter
+                0x00800219                timer1_post_scaller
+                0x0080021b                min_valid_signal_period
+                0x0080021c                usb_speed_boost
+                0x0080021d                transfered_bytes
+                0x0080021f                sending_done
+                0x00800220                trigger_instant
+ COMMON         0x00800224       0x37 usbdrv.o
+                0x00800224                usbTxBuf
+                0x0080022f                usbTxStatus1
+                0x0080023b                usbDeviceAddr
+                0x0080023c                usbRxToken
+                0x0080023d                usbInputBufOffset
+                0x0080023e                usbSofCount
+                0x0080023f                usbMsgPtr
+                0x00800241                usbRxLen
+                0x00800242                usbNewDeviceAddr
+                0x00800243                usbCurrentTok
+                0x00800244                usbConfiguration
+                0x00800245                usbRxBuf
+                0x0080025b                PROVIDE (__bss_end, .)
+                0x0000167a                __data_load_start = LOADADDR (.data)
+                0x0000167c                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0080025b        0x0
+                0x0080025b                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x0080025b                PROVIDE (__noinit_end, .)
+                0x0080025b                _end = .
+                0x0080025b                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x178
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 usbdrv.o
+ .debug_aranges
+                0x00000040       0x20 usbdrvasm.o
+ .debug_aranges
+                0x00000060       0x20 ini.o
+ .debug_aranges
+                0x00000080       0x20 isr.o
+ .debug_aranges
+                0x000000a0       0xb8 sram_spi.o
+ .debug_aranges
+                0x00000158       0x20 usb.o
+
+.debug_pubnames
+                0x00000000     0x1100
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x2ac main.o
+ .debug_pubnames
+                0x000002ac      0x1a0 usbdrv.o
+ .debug_pubnames
+                0x0000044c      0x2bf ini.o
+ .debug_pubnames
+                0x0000070b      0x2cb isr.o
+ .debug_pubnames
+                0x000009d6      0x435 sram_spi.o
+ .debug_pubnames
+                0x00000e0b      0x2f5 usb.o
+
+.debug_info     0x00000000     0x255a
+ *(.debug_info)
+ .debug_info    0x00000000      0x7b3 main.o
+ .debug_info    0x000007b3      0x8ec usbdrv.o
+ .debug_info    0x0000109f       0x79 usbdrvasm.o
+ .debug_info    0x00001118      0x36e ini.o
+ .debug_info    0x00001486      0x371 isr.o
+ .debug_info    0x000017f7      0x89b sram_spi.o
+ .debug_info    0x00002092      0x4c8 usb.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x826
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x15d main.o
+ .debug_abbrev  0x0000015d      0x2b0 usbdrv.o
+ .debug_abbrev  0x0000040d       0x14 usbdrvasm.o
+ .debug_abbrev  0x00000421       0xa3 ini.o
+ .debug_abbrev  0x000004c4       0x7f isr.o
+ .debug_abbrev  0x00000543      0x1dc sram_spi.o
+ .debug_abbrev  0x0000071f      0x107 usb.o
+
+.debug_line     0x00000000     0x1d4b
+ *(.debug_line)
+ .debug_line    0x00000000      0xb8c main.o
+ .debug_line    0x00000b8c      0x3d5 usbdrv.o
+ .debug_line    0x00000f61      0x199 usbdrvasm.o
+ .debug_line    0x000010fa       0xff ini.o
+ .debug_line    0x000011f9      0x1b2 isr.o
+ .debug_line    0x000013ab      0x821 sram_spi.o
+ .debug_line    0x00001bcc      0x17f usb.o
+
+.debug_frame    0x00000000      0x260
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x20 main.o
+ .debug_frame   0x00000020       0x40 usbdrv.o
+ .debug_frame   0x00000060       0x30 ini.o
+ .debug_frame   0x00000090       0x40 isr.o
+ .debug_frame   0x000000d0      0x150 sram_spi.o
+ .debug_frame   0x00000220       0x40 usb.o
+
+.debug_str      0x00000000      0x90b
+ *(.debug_str)
+ .debug_str     0x00000000      0x2fa main.o
+                                0x336 (size before relaxing)
+ .debug_str     0x000002fa      0x379 usbdrv.o
+                                0x418 (size before relaxing)
+ .debug_str     0x00000673       0x29 ini.o
+                                0x2e3 (size before relaxing)
+ .debug_str     0x0000069c       0x2c isr.o
+                                0x2e6 (size before relaxing)
+ .debug_str     0x000006c8      0x208 sram_spi.o
+                                0x4f8 (size before relaxing)
+ .debug_str     0x000008d0       0x3b usb.o
+                                0x378 (size before relaxing)
+
+.debug_loc      0x00000000      0xbba
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x280 main.o
+ .debug_loc     0x00000280      0x3a3 usbdrv.o
+ .debug_loc     0x00000623      0x4d8 sram_spi.o
+ .debug_loc     0x00000afb       0xbf usb.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(Scanalogic2_test_board.elf elf32-avr)
+LOAD linker stubs
+
+.bootloader     0x00003800      0x7de
+ .bootloader    0x00003800      0x7de sram_spi.o
+                0x00003a3a                sram_write_block
+                0x00003aca                sram_mixed_setup
+                0x00003fb2                sram_sequence_start
+                0x00003c6c                bootloader
+                0x00003c28                sram_read_byte
+                0x00003b5a                sram_read_status
+                0x00003972                sram_shit_out_mixed_byte
+                0x000039ee                sram_shit_out_byte
+                0x00003bba                sram_read_block
+                0x00003b8a                sram_write_status
+                0x00003870                sram_clk
+                0x00003a8e                sram_single_setup
+                0x00003886                sram_shift_byte_in
+                0x00003b06                sram_cs_end
+                0x00003800                sram_out
+                0x00003b12                sram_write_byte
+                0x00003fcc                sram_internal_clk
+                0x00003a78                sram_cs_reset
+                0x00003f62                sram_sequence_setup
+                0x00003928                sram_shit_out_word
+
+.debug_ranges   0x00000000      0x148
+ .debug_ranges  0x00000000       0x48 main.o
+ .debug_ranges  0x00000048       0x50 usbdrv.o
+ .debug_ranges  0x00000098       0xb0 sram_spi.o
