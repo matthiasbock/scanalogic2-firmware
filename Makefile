@@ -21,7 +21,7 @@ CFLAGS += -Wall -gdwarf-2 -std=gnu99 -DF_CPU=20000000UL -Os -funsigned-char -fun
 
 ## Included directories
 INCLUDES += -I./
-INCLUDES += -Iusb/
+INCLUDES += -Ilib/usb/
 
 ## Assembly specific flags
 ASMFLAGS = $(CFLAGS)
@@ -65,10 +65,10 @@ sram_spi.o: sram_spi.c
 usb.o: usb.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c $<
 
-usbdrvasm.o: usb/usbdrvasm.S
+usbdrvasm.o: lib/usb/usbdrvasm.S
 	$(CC) $(INCLUDES) $(ASMFLAGS) -c $<
 
-usbdrv.o: usb/usbdrv.c
+usbdrv.o: lib/usb/usbdrv.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ## Link
