@@ -1,7 +1,5 @@
 
-
 #include "header.h"
-
 
 PROGMEM const char usbHidReportDescriptor[22] = {    /* USB report descriptor */
     0x06, 0x00, 0xff,              // USAGE_PAGE (Generic Desktop)
@@ -25,18 +23,18 @@ uchar   usbFunctionRead(uchar *data, uchar len) //sends data to HOST
 {
     if(len > bytesRemaining)
         len = bytesRemaining;
-		////eeprom_write_block((uchar *)stream, (uchar *)0 + currentAddress, len);
+    ////eeprom_write_block((uchar *)stream, (uchar *)0 + currentAddress, len);
     //	eeprom_read_block(data, (uchar *)0 + currentAddress, len);
-		//memset(data,0xDD,len);
-		//data = 0;
-		memcpy (data,(uchar *)stream+currentAddress,len);
+    //memset(data,0xDD,len);
+    //data = 0;
+    memcpy (data,(uchar *)stream+currentAddress,len);
     currentAddress += len;
     bytesRemaining -= len;
-		if (bytesRemaining == 0)
-		{
-			usb_data_read = 1;
-			
-		}
+    if (bytesRemaining == 0)
+    {
+        usb_data_read = 1;
+
+    }
     return len;
 }
 
@@ -45,48 +43,52 @@ uchar   usbFunctionRead(uchar *data, uchar len) //sends data to HOST
  */
 uchar   usbFunctionWrite(uchar *data, uchar len)
 {
-		usb_alive = 0;
+    usb_alive = 0;
     if(bytesRemaining == 0)
-		{
-				new_usb_data = 1;			// ADDED BY IKALOGIC
+    {
+        new_usb_data = 1;                   // ADDED BY IKALOGIC
         return 1;               /* end of transfer */
-		}
+    }
     if(len > bytesRemaining)
         len = bytesRemaining;
     //eeprom_write_block(data, (uchar *)0 + currentAddress, len);
-		memcpy ((uchar *)stream+currentAddress,data,len);
+    memcpy ((uchar *)stream+currentAddress,data,len);
     currentAddress += len;
     bytesRemaining -= len;
     //return bytesRemaining == 0; /* return 1 if this was the last chunk */
 
-		// ADDED BY IKALOGIC
-		if(bytesRemaining == 0)
-		{
-				new_usb_data = 1;
+    // ADDED BY IKALOGIC
+    if(bytesRemaining == 0)
+    {
+        new_usb_data = 1;
         return 1;               /* end of transfer */
-		}
-		return bytesRemaining == 0;
+    }
+    return bytesRemaining == 0;
 }
 
 /* ------------------------------------------------------------------------- */
 
 usbMsgLen_t usbFunctionSetup(uchar data[8])
 {
-usbRequest_t    *rq = (void *)data;
-		usb_alive = 0;
-    if((rq->bmRequestType & USBRQ_TYPE_MASK) == USBRQ_TYPE_CLASS){    /* HID class request */
-        if(rq->bRequest == USBRQ_HID_GET_REPORT){  /* wValue: ReportType (highbyte), ReportID (lowbyte) */
+    usbRequest_t    *rq = (void *)data;
+    usb_alive = 0;
+    if((rq->bmRequestType & USBRQ_TYPE_MASK) == USBRQ_TYPE_CLASS) {    /* HID class request */
+        if(rq->bRequest == USBRQ_HID_GET_REPORT) {  /* wValue: ReportType (highbyte), ReportID (lowbyte) */
             /* since we have only one report type, we can ignore the report-ID */
             bytesRemaining = 128;
             currentAddress = 0;
             return USB_NO_MSG;  /* use usbFunctionRead() to obtain data */
-        }else if(rq->bRequest == USBRQ_HID_SET_REPORT){
+        }
+        else
+        if(rq->bRequest == USBRQ_HID_SET_REPORT) {
             /* since we have only one report type, we can ignore the report-ID */
             bytesRemaining = 128;
             currentAddress = 0;
             return USB_NO_MSG;  /* use usbFunctionWrite() to receive data from host */
         }
-    }else{
+    }
+    else
+    {
         /* ignore vendor type requests, we don't use any */
     }
     return 0;
