@@ -115,7 +115,7 @@ int main(void)
                         wdt_enable(WDTO_250MS);
                         while(1)
                         {
-                            LED_OFF
+                            LED_OFF;
                         }
                     }
                 }
@@ -166,13 +166,13 @@ int main(void)
             break;
         case 6:         //fast read mode (for live update on PC end), to exit this mode, PC have to send ABORT (0x2)
             usb_data_read = 0;
-            ISOLATE_ATMEGA         //set MOSI lines as input
+            ISOLATE_ATMEGA;         //set MOSI lines as input
             //all IN
-            SET_CH12_IN
-            SET_CH34_IN
+            SET_CH12_IN;
+            SET_CH34_IN;
 
             //stream[0] = 199;
-                stream[1] = (PIN_MOSI & (1<<MOSI0))>>MOSI0;
+            stream[1] = (PIN_MOSI & (1<<MOSI0))>>MOSI0;
             stream[2] = (PIN_MOSI & (1<<MOSI1))>>MOSI1;
             stream[3] = (PIN_MOSI & (1<<MOSI2))>>MOSI2;
             stream[4] = (PIN_MOSI & (1<<MOSI3))>>MOSI3;
@@ -215,7 +215,7 @@ int main(void)
                 //clear  all SRAMS
                 sram_mixed_setup(INST_WRITE, INST_WRITE, 0);
                 sram_out(0,CH_ALL);
-                SRAM_HS_CLK_ENA
+                SRAM_HS_CLK_ENA;
                 _delay_ms(250);
                 SRAM_HS_CLK_DIS;
                 break;
@@ -226,7 +226,7 @@ int main(void)
                 sram_mixed_setup(INST_READ, INST_WRITE, 0);
                 sram_out(0,2);
                 sram_out(0,3);
-                SRAM_HS_CLK_ENA
+                SRAM_HS_CLK_ENA;
                 _delay_ms(250);
                 SRAM_HS_CLK_DIS;
                 break;
@@ -234,7 +234,7 @@ int main(void)
                 sram_mixed_setup(INST_WRITE, INST_READ, 0);
                 sram_out(0,0);
                 sram_out(0,1);
-                SRAM_HS_CLK_ENA
+                SRAM_HS_CLK_ENA;
                 _delay_ms(250);
                 SRAM_HS_CLK_DIS;
                 break;
@@ -281,26 +281,26 @@ int main(void)
                 break;
             }
             SRAM_HS_CLK_DIS;
-            ISOLATE_ATMEGA         //Isolate MOSI line of the atmega, set all to inputs, no need to send anymore instructions to SRAMS
+            ISOLATE_ATMEGA;         //Isolate MOSI line of the atmega, set all to inputs, no need to send anymore instructions to SRAMS
 
             //Activate buffers
             switch(stream[1])
             {
             case 0:             //all IN
-                SET_CH12_IN
-                    SET_CH34_IN
+                SET_CH12_IN;
+                SET_CH34_IN;
                 break;
             case 1:            //all OUT
-                SET_CH12_OUT
-                    SET_CH34_OUT
+                SET_CH12_OUT;
+                SET_CH34_OUT;
                 break;
             case 2:            //1,2 OUT
-                SET_CH12_OUT
-                    SET_CH34_IN
+                SET_CH12_OUT;
+                SET_CH34_IN;
                 break;
             case 3:            //3,4 out
-                SET_CH12_IN
-                    SET_CH34_OUT
+                SET_CH12_IN;
+                SET_CH34_OUT;
                 break;
             default:
                 break;
@@ -337,67 +337,67 @@ int main(void)
             {
             case SR_20M:
                 sample_length = 1;             //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_ENA
+                SRAM_HS_CLK_ENA;
                 break;
             case SR_10M:
                 OCR2A = 0;
                 sample_length =2;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_5M:
                 OCR2A = 1;
                 sample_length =4;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_2M5:
                 OCR2A = 3;
                 sample_length =8;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_1M:
                 OCR2A = 9;
                 sample_length =20;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_500K:
                 OCR2A = 19;
                 sample_length =40;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_250K:
                 OCR2A = 39;
                 sample_length =80;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_100K:
                 OCR2A = 99;
                 sample_length =200;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_50K:
                 OCR2A = 199;
                 sample_length =400;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV1;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV1;
                 break;
             case SR_10K:
                 OCR2A = 124;
                 sample_length =2000;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV8;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV8;
                 break;
             case SR_1K25:
                 OCR2A = 249;
                 sample_length =16000;              //sample_length will determine the relation between timer 1 and the actual number of samples
-                SRAM_HS_CLK_DIS
-                    START_TIMER2_DIV32;
+                SRAM_HS_CLK_DIS;
+                START_TIMER2_DIV32;
                 break;
             default:
                 break;
@@ -629,8 +629,8 @@ int main(void)
             break;
         case 7:         //Store usb update data in SRAM0
 
-            STOP_USB_TIMER
-                new_usb_data = 1;
+            STOP_USB_TIMER;
+            new_usb_data = 1;
             sending_done = 0;
             gen_mode = 1;
             while(sending_done == 0)
@@ -641,12 +641,12 @@ int main(void)
                     if (stream[0] == 7)
                     {
                         new_usb_data = 0;
-                        LED_ON
+                        LED_ON;
                         //memcpy((void*)&temp_add,(void*)&stream[1],2);
                         //memset((void*)&stream[4],test_counter++,124);
                         sram_write_block(update_channel,124, (uchar*)&stream[4]);
 
-                        LED_OFF
+                        LED_OFF;
                     }
                     else
                     {
@@ -661,7 +661,7 @@ int main(void)
             //clear  all SRAMS
             sram_mixed_setup(INST_WRITE, INST_WRITE, 0);
             sram_out(0,CH_ALL);
-            SRAM_HS_CLK_ENA
+            SRAM_HS_CLK_ENA;
             _delay_ms(250);
             SRAM_HS_CLK_DIS;
             sram_cs_end();
@@ -676,12 +676,12 @@ int main(void)
                 STOP_TIMER2;
                 sram_cs_end();             //Stop the SRAM sequence
 
-                ISOLATE_PROBES
-                    gen_mode = 0;
+                ISOLATE_PROBES;
+                gen_mode = 0;
             }
             PCMSK1 = 0x0;
             //LED_OFF
-            ISOLATE_PROBES
+            ISOLATE_PROBES;
             if (usb_data_read == 1)             //make sure previous data have been read by HOST
             {
                 memset((void*)stream,0,128);

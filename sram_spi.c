@@ -30,10 +30,10 @@ BOOTLOADER_SECTION void bootloader()
         boot_page_erase_safe (page*SPM_PAGESIZE);
         boot_spm_busy_wait ();      // Wait until the memory is erased.
     }
-    LED_ON
+    LED_ON;
 
     // DECRYPTION
-        local_cycle = 0;
+    local_cycle = 0;
     local_cycle_period = 3;
     temp_1 = 0;
     // END DECRIPTION
@@ -115,7 +115,7 @@ BOOTLOADER_SECTION void bootloader()
 
     while(1)
     {
-        LED_OFF
+        LED_OFF;
     }
 }
 
@@ -143,7 +143,7 @@ BOOTLOADER_SECTION void sram_single_setup(uchar inst, uchar ch, unsigned int add
     //
     //	This function is manly used for sequantial read/write of the SRAM
     //	and does not includes the SPI sequence termination on purpose.
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     sram_cs_reset();
     sram_shit_out_byte(inst, ch); //send instructions
     sram_shit_out_word(add, ch);    //send start address
@@ -157,7 +157,7 @@ BOOTLOADER_SECTION uchar sram_read_byte(unsigned int add, uchar channel)
     //	value from 0 to 3.
 
     uchar val;
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     sram_cs_reset();
     sram_shit_out_byte(INST_READ,channel);
     sram_shit_out_word(add, channel);
@@ -179,7 +179,7 @@ BOOTLOADER_SECTION void sram_read_block(unsigned int add, uchar channel,uchar le
     //
 
     uchar pointer=0;
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     sram_cs_reset();
     sram_shit_out_byte(INST_READ,channel);
     sram_shit_out_word(add, channel);
@@ -198,7 +198,7 @@ BOOTLOADER_SECTION void sram_write_block(uchar channel,uchar len, uchar* data_st
     // a new WRITE sequance must have been allready started with the correct start address
 
     uchar pointer=0;
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     //sram_cs_reset();
     //sram_shit_out_byte(INST_READ,channel);
     //sram_shit_out_word(add, channel);
@@ -214,7 +214,7 @@ BOOTLOADER_SECTION void sram_write_status(uchar val)
 {
     //	DECRIPTION : Writes STATUS register with the byte "val"
     //	for all SRAMS at the same time
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     sram_cs_reset();
     sram_shit_out_byte(1,CH_ALL);
     sram_shit_out_byte(val,CH_ALL);
@@ -225,8 +225,8 @@ BOOTLOADER_SECTION uchar sram_read_status()
 {
     //	DECRIPTION : Reads the STATUS register from SRAM number 0
     uchar val;
-    ISOLATE_PROBES
-        val = 0;
+    ISOLATE_PROBES;
+    val = 0;
     sram_cs_reset();
     sram_shit_out_byte(5,CH_ALL);
     val = sram_shift_byte_in(0);
@@ -238,7 +238,7 @@ BOOTLOADER_SECTION void sram_write_byte(unsigned int add, uchar val, uchar chann
 {
     //	DECRIPTION : Writes the byte "val" at the address "add" on the
     //	SRAM determined by "channel" which is value ranging from 0 to 3
-    ISOLATE_PROBES
+    ISOLATE_PROBES;
     sram_cs_reset();
     sram_shit_out_byte(INST_WRITE,channel);
     sram_shit_out_word(add, channel);
@@ -262,7 +262,7 @@ BOOTLOADER_SECTION void sram_shit_out_byte(uchar val, uchar channel)
 
 BOOTLOADER_SECTION void sram_shit_out_mixed_byte(uchar val1, uchar val2)
 {
-    //	DECRIPTION : Intermediate level function used by High level functions.
+    // DECRIPTION : Intermediate level function used by High level functions.
     // Shift out differnet data on the channels :
     // on channel 0,1 : shift out the byte "val1"
     // on channel 2,3 : shift out the byte "val2"
@@ -294,9 +294,9 @@ BOOTLOADER_SECTION void sram_shit_out_word(unsigned int val, uchar channel)
 
 BOOTLOADER_SECTION uchar sram_shift_byte_in(uchar channel)
 {
-    //	DECRIPTION : Intermediate level function used by High level functions.
-    //	Used to clock in 8 bit from the MISO line of the SRAM defined by
-    //	"channel".
+    // DECRIPTION : Intermediate level function used by High level functions.
+    // Used to clock in 8 bit from the MISO line of the SRAM defined by
+    // "channel".
     volatile uchar i,val = 0;
     for(i=0; i<7; i++) //Get first 7 MSBs
     {
@@ -314,8 +314,8 @@ BOOTLOADER_SECTION uchar sram_shift_byte_in(uchar channel)
 
 BOOTLOADER_SECTION void sram_out(uchar val,uchar channel)
 {
-    //	DECRIPTION : Lowest level function used by intermediate level functions.
-    //	Used to set/clear the MISO line of the SRAM defines by "channel"
+    // DECRIPTION : Lowest level function used by intermediate level functions.
+    // Used to set/clear the MISO line of the SRAM defines by "channel"
     if (channel == CH_ALL)
     {
         switch(val)
@@ -402,9 +402,9 @@ BOOTLOADER_SECTION void sram_sequence_setup(uchar stop_clk_sel,uchar freq_clk_se
 
     //
     sram_sequence_busy = 0;
-    SRAM_HS_CLK_DIS
+    SRAM_HS_CLK_DIS;
     //timer 1 is used to stop timer 2
-        TCCR1A = 0;
+    TCCR1A = 0;
     OCR1A = stop_val;
     TCCR1B = 0;
     TCCR1B_temp = (1<<WGM12)|((stop_clk_sel&0x7)<<CS00);
@@ -428,7 +428,6 @@ BOOTLOADER_SECTION void sram_sequence_start()
 
 BOOTLOADER_SECTION void sram_internal_clk(uchar mode, uchar clk_sel,uchar val) //now this function will be used to set the lock bits
 {
-
     boot_lock_bits_set(mode);
 /*
     //Setups the internal clock on OC2A pin to drive the SRAMs.
@@ -447,5 +446,4 @@ BOOTLOADER_SECTION void sram_internal_clk(uchar mode, uchar clk_sel,uchar val) /
     TCCR2B = (clk_sel&0x7);
     OCR2A = val;
  */
-
 }
